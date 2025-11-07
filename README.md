@@ -1,75 +1,79 @@
-# DJS03: React Podcast Landing Page
+# DJS02 Web Component Podcast Preview
 
-## Overview
+This project is a **modular Vanilla JavaScript application** that uses a custom **Web Component** to render podcast cards. It embraces modern web standards such as **Shadow DOM**, **custom elements**, and **event-driven UI** design.
 
-In this project, you will build the landing page for a podcast discovery app using **React**. Your goal is to fetch podcast data from an external API and dynamically render a **responsive grid of podcast previews**. This project focuses on **data fetching**, **component structure**, **rendering logic**, and **layout styling**.
-
----
-
-## Core Objectives
-
-- Fetch podcast data from an API: https://podcast-api.netlify.app/ on initial page load.
-- Display a loading indicator while data is being fetched, and handle errors or empty results with a clear user message.
-- Render a responsive **grid layout** of podcast previews using modular, reusable React components.
-- Pass podcast data into components via props and render each podcast card with the following:
-  - Podcast **image**
-  - Podcast **title**
-  - Number of **seasons**
-  - Associated **genre names**
-  - Formatted **last updated** date (e.g., "2 days ago")
-- Apply clean, consistent layout and styling across different screen sizes using CSS Grid or Flexbox.
-- Maintain high-quality, readable code with clear structure and **JSDoc comments** for key functions and components.
+This version improves on DJS01 by replacing factory-based card rendering with a reusable `<podcast-card>` Web Component.
 
 ---
 
-## Technical Requirements
+## Features
 
-- Use **React functional components**
-- Use the **Fetch API**
-- Use `useEffect()` to fetch data once on mount
-- Use `useState()` to manage podcast data
-- Use `.map()` to dynamically render PodcastPreviewCard components
-- Format dates using `date-fns` or a custom formatter
-
----
-
-## Responsiveness Requirements
-
-- Must look good on:
-  - Desktop (≥1200px)
-  - Tablet (~768px)
-  - Mobile (~375px)
-- Use **CSS Grid** or **Flexbox**
-- Media queries or frameworks like **Tailwind CSS** are allowed
+- Displays a responsive grid of podcast cards using a custom element
+- Dispatches `podcast-selected` event when a card is clicked
+- Uses utility services for formatting dates and resolving genre names
+- Opens a modal with detailed information
+- Emphasizes **modularity**, **encapsulation**, and **event-driven architecture**
 
 ---
 
-## Deliverables
+## Project Structure
 
-- **Functional React Application**
+```
+/src
+│
+├── /components
+│ ├── PodcastCard.js # Web Component for podcast preview
+│ └── createModal.js # Factory for modal control (open/close)
+│
+├── /utils
+│ ├── DateUtils.js # Formats podcast dates
+│ └── GenreService.js # Maps genre IDs to readable names
+│
+├── /views
+│ └── createGrid.js # Places podcast-card elements into the page
+│
+├── data.js # Sample podcast and genre data
+└── index.js # App entry point
+```
 
-  - A working React app that fetches podcast data from an external API on initial load.
-  - The app renders a grid of podcast previews using reusable components.
+---
 
-- **Loading, Error, and Empty States**
+## How it Works
 
-  - A clear loading indicator is displayed while fetching data.
-  - Meaningful error or empty state messaging is shown if the fetch fails or returns no results.
+### `<podcast-card>` Web Component
 
-- **Podcast Preview Card Component**
+The `PodcastCard.js` module defines a fully encapsulated Web Component using the Shadow DOM. It takes in podcast data via `setPodcast(podcast)` and renders a stylized preview card.
 
-  - A reusable component that displays:
-    - Podcast image
-    - Podcast title
-    - Number of seasons
-    - Genre tags
-    - Last updated date in a human-readable format (e.g., "3 days ago")
+When clicked, it dispatches a custom `podcast-selected` event containing the podcast data:
 
-- **Responsive Layout**
+```js
+const card = document.createElement("podcast-card");
+card.setPodcast(podcastData);
+card.addEventListener("podcast-selected", (e) => {
+  console.log("Podcast clicked:", e.detail);
+});
+```
 
-  - Grid layout that adapts to mobile, tablet, and desktop screen sizes using responsive design principles.
+This makes it easy to plug into any system that listens for podcast selection.
 
-- **Codebase**
-  - Clean, modular code with clearly separated components.
-  - All major functions and modules documented with **JSDoc** comments.
-  - Consistent formatting across JavaScript, JSX, HTML, and CSS files.
+### Grid Rendering with `createGrid`
+
+The `createGrid` factory is responsible for rendering a list of podcast cards into a container. It does this by:
+
+- Creating a `<podcast-card>` for each podcast in the list
+- Setting its data using s`etPodcast(podcast)`
+- Listening for the `podcast-selected` event to open a modal
+
+## Learning Goals
+
+- Learn how to create reusable Web Components with encapsulated styles and logic
+- Apply Shadow DOM for style isolation
+- Communicate between components using custom events
+- Build composable UI modules using factory functions
+
+## How to Run
+
+1. Clone this project or open it locally.
+2. Open index.html in your browser.
+3. Browse the podcast cards and click one to open details.
+4. Close the modal to return to the list.
