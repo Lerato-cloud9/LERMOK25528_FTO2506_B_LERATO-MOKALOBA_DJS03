@@ -7,6 +7,13 @@ import React from 'react';
 import { GenreService } from "../utils/GenreService.js";
 import { DateUtils } from "../utils/DateUtils.js";
 
+function PodcastCard({ podcast, genres, onClick }) {
+  // Convert genre IDs to readable names
+  const genreNames = getGenreNames(podcast.genres, genres);
+  
+  // Format the update date to be human-readable
+  const formattedDate = formatDate(podcast.updated);
+}
 /**
  * Template containing the markup and styles for the podcast card.
  */
