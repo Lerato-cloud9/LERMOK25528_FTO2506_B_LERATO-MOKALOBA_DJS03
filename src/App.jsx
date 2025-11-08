@@ -17,9 +17,29 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
-}
 
 /**
    * Fetches podcast data from the API on component mount
    * Handles loading states and errors appropriately
    */
+
+useEffect(() => {
+    const fetchPodcasts = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://podcast-api.netlify.app/');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch podcasts');
+        }
+        
+        const data = await response.json();
+        setPodcasts(data);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setPodcasts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
