@@ -23,6 +23,20 @@ function PodcastCard({ podcast, genres, onClick }) {
     event.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
 };
 
+  return (
+    <div 
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        background: 'white',
+        borderRadius: '8px',
+        padding: '1rem',
+        cursor: 'pointer',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        transition: 'transform 0.2s, box-shadow 0.2s',
+      }}
+      
 /**
  * Template containing the markup and styles for the podcast card.
  */
