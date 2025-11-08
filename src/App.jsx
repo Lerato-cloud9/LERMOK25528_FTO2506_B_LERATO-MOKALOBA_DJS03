@@ -204,3 +204,40 @@ function App() {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+    /**
+   * Fetches podcast data from the API on component mount
+   * Uses useEffect hook to ensure data is fetched only once
+   * Handles loading states and errors appropriately
+   */
+  useEffect(() => {
+    const fetchPodcasts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const response = await fetch('https://podcast-api.netlify.app/');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch podcasts: ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        
+        // Validate that we received an array
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid data format received from API');
+        }
+        
+        setPodcasts(data);
+      } catch (err) {
+        console.error('Error fetching podcasts:', err);
+        setError(err.message);
+        setPodcasts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPodcasts();
+  }, []); // Empty dependency array ensures this runs only once on mount
