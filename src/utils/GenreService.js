@@ -20,7 +20,13 @@ export function getGenreNames(genreIds, genresData = null) {
       })
       .filter(Boolean); // Remove null values
   }
-  
+
+  // Otherwise use fallback genre map
+  return genreIds
+    .map(id => genreMap[id])
+    .filter(Boolean); // Remove undefined values
+}
+
   getNames(genreIds) {
     return genreIds.map(
       (id) => genres.find((g) => g.id === id)?.title || "Unknown"
