@@ -1,23 +1,27 @@
 /**
- * Date Formatter - Utility function for date formatting.
- *
- * @principle SRP - Single Responsibility Principle: This module only formats dates and does not handle any unrelated logic.
+ * DateUtils Module
+ * Provides utility functions for formatting dates
  */
-export const DateUtils = {
-  /**
-   * Formats a date string into a human-readable format.
-   * @param {string} dateStr - ISO date string.
-   * @returns {string} Formatted date string.
-   */
-  format(dateStr) {
-    const date = new Date(dateStr);
-    return `Updated ${date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })}`;
-  },
-};
+
+/**
+ * Formats an ISO date string into a human-readable format
+ * @param {string} dateString - ISO date string (e.g., "2022-11-03T07:00:00.000Z")
+ * @returns {string} Formatted date string (e.g., "November 3, 2022")
+ * 
+ * @example
+ * formatDate("2022-11-03T07:00:00.000Z") // Returns "November 3, 2022"
+ */
+export function formatDate(dateString) {
+  const date = new Date(dateString);
+  
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+  
+  return date.toLocaleDateString('en-US', options);
+}
 
 /**
  * Gets a relative time string (e.g., "2 days ago")
@@ -31,8 +35,8 @@ export function getRelativeTime(dateString) {
   const date = new Date(dateString);
   const now = new Date();
   const diffInSeconds = Math.floor((now - date) / 1000);
-
-    const intervals = {
+  
+  const intervals = {
     year: 31536000,
     month: 2592000,
     week: 604800,
@@ -41,16 +45,6 @@ export function getRelativeTime(dateString) {
     minute: 60
   };
   
-    for (const [unit, seconds] of Object.entries(intervals)) {
-    const interval = Math.floor(diffInSeconds / seconds);
-    if (interval >= 1) {
-      return `${interval} ${unit}${interval === 1 ? '' : 's'} ago`;
-    }
-  }
-  
-  return 'Just now';
-}
-
   for (const [unit, seconds] of Object.entries(intervals)) {
     const interval = Math.floor(diffInSeconds / seconds);
     if (interval >= 1) {
@@ -59,4 +53,4 @@ export function getRelativeTime(dateString) {
   }
   
   return 'Just now';
-
+}
