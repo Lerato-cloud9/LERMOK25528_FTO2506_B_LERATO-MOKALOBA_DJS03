@@ -13,7 +13,16 @@ function PodcastCard({ podcast, genres, onClick }) {
   
   // Format the update date to be human-readable
   const formattedDate = formatDate(podcast.updated);
-}
+
+    /**
+   * Handles mouse enter event for hover effect
+   * @param {Event} event - Mouse event object
+   */
+  const handleMouseEnter = (event) => {
+    event.currentTarget.style.transform = 'translateY(-4px)';
+    event.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+};
+
 /**
  * Template containing the markup and styles for the podcast card.
  */
