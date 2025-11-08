@@ -191,3 +191,16 @@ const PodcastGrid = ({ podcasts }) => {
     </div>
   );
 };
+
+/**
+ * Main App Component
+ * Fetches podcast data from API and manages application state
+ * Handles loading, error, and empty states
+ * Renders the complete podcast discovery interface
+ * @returns {JSX.Element} The main application component
+ */
+function App() {
+  // State management for podcasts data
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
