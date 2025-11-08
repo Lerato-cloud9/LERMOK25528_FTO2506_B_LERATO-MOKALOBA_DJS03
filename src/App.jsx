@@ -85,3 +85,15 @@ const ErrorState = ({ message }) => (
     <p className="text-gray-600">{message}</p>
   </div>
 );
+
+/**
+ * Empty State Component
+ * Displays message when no podcasts are available
+ * @returns {JSX.Element} Empty state with icon and message
+ */
+const EmptyState = () => (
+  <div className="flex flex-col items-center justify-center min-h-[400px] gap-4">
+    <Inbox className="w-12 h-12 text-gray-400" />
+    <p className="text-gray-600 text-lg">No podcasts found</p>
+  </div>
+);
