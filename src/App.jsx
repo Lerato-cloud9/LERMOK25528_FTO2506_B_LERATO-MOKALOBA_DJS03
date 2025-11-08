@@ -126,3 +126,51 @@ const Header = () => (
  * @param {string} props.podcast.updated - Last updated date string
  * @returns {JSX.Element} Podcast preview card
  */
+
+const PodcastCard = ({ podcast }) => {
+  const { title, image, seasons, genres, updated } = podcast;
+  const genreNames = getGenreNames(genres);
+  
+  return (
+    <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+      <div className="aspect-square overflow-hidden">
+        <img 
+          src={image} 
+          alt={`${title} cover`}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+      
+      <div className="p-4">
+        <h3 className="font-bold text-lg text-gray-900 mb-2 line-clamp-2 min-h-[3.5rem]">
+          {title}
+        </h3>
+        
+        <p className="text-sm text-gray-600 mb-3">
+          {seasons} {seasons === 1 ? 'Season' : 'Seasons'}
+        </p>
+        
+        <div className="flex flex-wrap gap-2 mb-3">
+          {genreNames.slice(0, 3).map((genre, index) => (
+            <span 
+              key={index}
+              className="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full"
+            >
+              {genre}
+            </span>
+          ))}
+          {genreNames.length > 3 && (
+            <span className="inline-block bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">
+              +{genreNames.length - 3}
+            </span>
+          )}
+        </div>
+        
+        <div className="flex items-center text-xs text-gray-500 mt-auto">
+          <Calendar className="w-3 h-3 mr-1" />
+          <span>{formatDate(updated)}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
