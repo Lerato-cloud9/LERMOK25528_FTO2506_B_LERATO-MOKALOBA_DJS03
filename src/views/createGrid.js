@@ -5,6 +5,7 @@
  */
 import "../components/PodcastCard.js";
 import { createModal } from "../components/createModal.js";
+import React from 'react';
 
 /**
  * Grid Renderer - Responsible for rendering the grid of podcast cards.
