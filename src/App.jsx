@@ -46,3 +46,15 @@ const formatDate = (dateString) => {
     day: 'numeric'
   })}`;
 };
+
+/**
+ * Utility function to get genre names from genre IDs
+ * @param {number[]} genreIds - Array of genre ID numbers
+ * @returns {string[]} Array of genre title strings
+ */
+const getGenreNames = (genreIds) => {
+  if (!genreIds || !Array.isArray(genreIds)) return [];
+  return genreIds
+    .map(id => GENRES.find(genre => genre.id === id)?.title)
+    .filter(Boolean);
+};
