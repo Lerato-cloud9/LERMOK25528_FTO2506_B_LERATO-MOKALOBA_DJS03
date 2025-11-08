@@ -36,3 +36,12 @@ export function getGenreNames(genreIds, genresData = null) {
  * @example
  * getGenreById(1) // Returns "Personal Growth"
  */
+
+export function getGenreById(genreId, genresData = null) {
+  if (genresData && genresData.length > 0) {
+    const genre = genresData.find(g => g.id === genreId);
+    return genre ? genre.title : null;
+  }
+  
+  return genreMap[genreId] || null;
+}
