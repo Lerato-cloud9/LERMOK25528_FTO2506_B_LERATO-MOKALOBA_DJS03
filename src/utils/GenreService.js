@@ -27,9 +27,12 @@ export function getGenreNames(genreIds, genresData = null) {
     .filter(Boolean); // Remove undefined values
 }
 
-  getNames(genreIds) {
-    return genreIds.map(
-      (id) => genres.find((g) => g.id === id)?.title || "Unknown"
-    );
-  },
-};
+/**
+ * Gets a single genre name by ID
+ * @param {number} genreId - Genre ID number
+ * @param {Object[]} genresData - Optional: Full genre objects from API
+ * @returns {string|null} Genre name or null if not found
+ * 
+ * @example
+ * getGenreById(1) // Returns "Personal Growth"
+ */
