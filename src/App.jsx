@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Loader, AlertCircle, Inbox } from 'lucide-react';
 
 /**
- * Main App Component
- * Fetches podcast data from API and manages application state
- * @returns {JSX.Element} The main application component
- */
-
-*
  * Genre data mapping
  * Maps genre IDs to their titles for display purposes
  */
@@ -22,7 +16,6 @@ const GENRES = [
   { id: 8, title: "News" },
   { id: 9, title: "Kids and Family" }
 ];
-
 /**
  * Utility function to format dates in human-readable format
  * @param {string} dateString - ISO date string from API
