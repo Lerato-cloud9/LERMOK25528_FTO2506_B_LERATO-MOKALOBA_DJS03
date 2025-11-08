@@ -241,3 +241,31 @@ function App() {
 
     fetchPodcasts();
   }, []); // Empty dependency array ensures this runs only once on mount
+
+    return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      
+      <main className="container mx-auto px-4 py-8">
+        {/* Conditional rendering based on application state */}
+        {loading && <LoadingState />}
+        
+        {error && !loading && <ErrorState message={error} />}
+        
+        {!loading && !error && podcasts.length === 0 && <EmptyState />}
+        
+        {!loading && !error && podcasts.length > 0 && (
+          <PodcastGrid podcasts={podcasts} />
+        )}
+      </main>
+      
+      <footer className="bg-white border-t border-gray-200 mt-12">
+        <div className="container mx-auto px-4 py-6 text-center text-gray-600 text-sm">
+          <p>Podcast Discovery App • Data from Podcast API</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
