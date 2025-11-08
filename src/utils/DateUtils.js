@@ -18,3 +18,17 @@ export const DateUtils = {
     })}`;
   },
 };
+
+/**
+ * Gets a relative time string (e.g., "2 days ago")
+ * @param {string} dateString - ISO date string
+ * @returns {string} Relative time string
+ * 
+ * @example
+ * getRelativeTime("2022-11-01T07:00:00.000Z") // Returns "3 years ago"
+ */
+export function getRelativeTime(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - date) / 1000);
+}
