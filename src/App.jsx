@@ -43,3 +43,20 @@ useEffect(() => {
         setLoading(false);
       }
     };
+
+        fetchPodcasts();
+  }, []);
+
+  /**
+   * Handles podcast card click to show details
+   * @param {string} podcastId - The ID of the selected podcast
+   */
+  const handlePodcastClick = async (podcastId) => {
+    try {
+      const response = await fetch(`https://podcast-api.netlify.app/id/${podcastId}`);
+      const data = await response.json();
+      setSelectedPodcast(data);
+    } catch (err) {
+      console.error('Failed to fetch podcast details:', err);
+    }
+  };
