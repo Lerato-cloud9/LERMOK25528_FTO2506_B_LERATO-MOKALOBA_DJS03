@@ -10,12 +10,17 @@ import { genres } from "../data.js";
  *
  * @principle SRP - Single Responsibility Principle: Only responsible for mapping genre IDs to names.
  */
-export const GenreService = {
-  /**
-   * Resolves an array of genre IDs into an array of genre titles.
-   * @param {number[]} genreIds - Array of genre IDs.
-   * @returns {string[]} Array of genre titles.
-   */
+export function getGenreNames(genreIds, genresData = null) {
+  // If we have API genre data, use it
+  if (genresData && genresData.length > 0) {
+    return genreIds
+      .map(id => {
+        const genre = genresData.find(g => g.id === id);
+        return genre ? genre.title : null;
+      })
+      .filter(Boolean); // Remove null values
+  }
+  
   getNames(genreIds) {
     return genreIds.map(
       (id) => genres.find((g) => g.id === id)?.title || "Unknown"
