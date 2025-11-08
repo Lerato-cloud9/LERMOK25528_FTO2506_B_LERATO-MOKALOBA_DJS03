@@ -1,3 +1,8 @@
+/**
+ * CreateGrid Module
+ * Factory function that creates and renders the podcast grid view
+ * Responsible for displaying all podcast cards in a responsive layout
+ */
 import "../components/PodcastCard.js";
 import { createModal } from "../components/createModal.js";
 
