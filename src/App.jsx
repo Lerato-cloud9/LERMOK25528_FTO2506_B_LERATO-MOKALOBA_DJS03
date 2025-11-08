@@ -70,3 +70,18 @@ const LoadingState = () => (
     <p className="text-gray-600 text-lg">Loading podcasts...</p>
   </div>
 );
+
+/**
+ * Error State Component
+ * Displays error message when data fetch fails
+ * @param {Object} props - Component props
+ * @param {string} props.message - Error message to display
+ * @returns {JSX.Element} Error state with icon and message
+ */
+const ErrorState = ({ message }) => (
+  <div className="flex flex-col items-center justify-center min-h-[400px] gap-4">
+    <AlertCircle className="w-12 h-12 text-red-500" />
+    <p className="text-red-600 text-lg font-medium">Error loading podcasts</p>
+    <p className="text-gray-600">{message}</p>
+  </div>
+);
