@@ -1,3 +1,8 @@
+/**
+ * GenreService Module
+ * Handles genre ID to name mapping and genre-related operations
+ */
+
 import { genres } from "../data.js";
 
 /**
