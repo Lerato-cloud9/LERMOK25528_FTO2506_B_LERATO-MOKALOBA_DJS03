@@ -112,3 +112,17 @@ const Header = () => (
     </div>
   </header>
 );
+
+/**
+ * Podcast Card Component
+ * Displays a single podcast preview with image, title, seasons, genres, and last updated date
+ * @param {Object} props - Component props
+ * @param {Object} props.podcast - Podcast data object
+ * @param {string} props.podcast.id - Unique podcast identifier
+ * @param {string} props.podcast.title - Podcast title
+ * @param {string} props.podcast.image - Podcast cover image URL
+ * @param {number} props.podcast.seasons - Number of seasons
+ * @param {number[]} props.podcast.genres - Array of genre IDs
+ * @param {string} props.podcast.updated - Last updated date string
+ * @returns {JSX.Element} Podcast preview card
+ */
