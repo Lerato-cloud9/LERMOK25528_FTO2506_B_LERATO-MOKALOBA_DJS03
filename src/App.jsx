@@ -60,3 +60,30 @@ useEffect(() => {
       console.error('Failed to fetch podcast details:', err);
     }
   };
+
+    /**
+   * Closes the modal and clears selected podcast
+   */
+  const handleCloseModal = () => {
+    setSelectedPodcast(null);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <main className="container mx-auto px-4 py-8">
+        {loading && <LoadingState />}
+        {error && <ErrorState message={error} />}
+        {!loading && !error && podcasts.length === 0 && <EmptyState />}
+        {!loading && !error && podcasts.length > 0 && (
+          <PodcastGrid podcasts={podcasts} onPodcastClick={handlePodcastClick} />
+        )}
+      </main>
+      {selectedPodcast && (
+        <PodcastModal podcast={selectedPodcast} onClose={handleCloseModal} />
+      )}
+    </div>
+  );
+}
+
+export default App;
