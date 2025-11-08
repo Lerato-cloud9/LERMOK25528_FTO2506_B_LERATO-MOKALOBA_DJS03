@@ -19,8 +19,8 @@ function PodcastCard({ podcast, genres, onClick }) {
    * @param {Event} event - Mouse event object
    */
   const handleMouseEnter = (event) => {
-    event.currentTarget.style.transform = 'translateY(-4px)';
-    event.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.15)';
+    event.currentTarget.style.transform = 'translateY(0)';
+    event.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
 };
 
   return (
