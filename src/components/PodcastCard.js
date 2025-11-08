@@ -1,3 +1,9 @@
+/**
+ * PodcastCard Component
+ * A reusable React component that displays a podcast preview card
+ * Shows image, title, seasons, genres, and last updated date
+ */
+
 import { GenreService } from "../utils/GenreService.js";
 import { DateUtils } from "../utils/DateUtils.js";
 
