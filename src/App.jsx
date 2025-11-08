@@ -174,3 +174,20 @@ const PodcastCard = ({ podcast }) => {
     </div>
   );
 };
+
+/**
+ * Podcast Grid Component
+ * Displays a responsive grid of podcast cards
+ * @param {Object} props - Component props
+ * @param {Array} props.podcasts - Array of podcast objects to display
+ * @returns {JSX.Element} Responsive grid layout with podcast cards
+ */
+const PodcastGrid = ({ podcasts }) => {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {podcasts.map(podcast => (
+        <PodcastCard key={podcast.id} podcast={podcast} />
+      ))}
+    </div>
+  );
+};
