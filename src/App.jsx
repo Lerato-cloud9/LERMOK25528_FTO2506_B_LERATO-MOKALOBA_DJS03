@@ -18,3 +18,8 @@ function App() {
   const [error, setError] = useState(null);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
 }
+
+/**
+   * Fetches podcast data from the API on component mount
+   * Handles loading states and errors appropriately
+   */
