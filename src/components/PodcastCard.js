@@ -1,42 +1,6 @@
-/**
- * PodcastCard Component
- * A reusable React component that displays a podcast preview card
- * Shows image, title, seasons, genres, and last updated date
- */
-import React from 'react';
 import { GenreService } from "../utils/GenreService.js";
 import { DateUtils } from "../utils/DateUtils.js";
 
-function PodcastCard({ podcast, genres, onClick }) {
-  // Convert genre IDs to readable names
-  const genreNames = getGenreNames(podcast.genres, genres);
-  
-  // Format the update date to be human-readable
-  const formattedDate = formatDate(podcast.updated);
-
-    /**
-   * Handles mouse enter event for hover effect
-   * @param {Event} event - Mouse event object
-   */
-  const handleMouseEnter = (event) => {
-    event.currentTarget.style.transform = 'translateY(0)';
-    event.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-};
-
-  return (
-    <div 
-      onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        background: 'white',
-        borderRadius: '8px',
-        padding: '1rem',
-        cursor: 'pointer',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        transition: 'transform 0.2s, box-shadow 0.2s',
-      }}
-      
 /**
  * Template containing the markup and styles for the podcast card.
  */
