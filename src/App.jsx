@@ -11,3 +11,10 @@ import PodcastModal from './components/PodcastModal';
  * Fetches podcast data from API and manages application state
  * @returns {JSX.Element} The main application component
  */
+
+function App() {
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedPodcast, setSelectedPodcast] = useState(null);
+}
